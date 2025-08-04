@@ -1,0 +1,228 @@
+{% extends 'adminlogin.html' %}
+
+{% block body %}
+<div class="px-5" style="margin-top: 100px">
+
+  <!-- Add Button -->
+  <div class="btn btn-primary float-end fw-bold" data-bs-toggle="modal" data-bs-target="#carModal">
+    + Add
+  </div>
+
+ <div class="modal fade" id="carModal" tabindex="-1" aria-labelledby="carModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="carModalLabel"><i class="fas fa-car"></i> Add Car Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <form method="POST" enctype="multipart/form-data">
+
+          {% csrf_token %}
+        
+          <div class="modal-body" style="max-height: 50vh; overflow-y: auto;">
+
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="image1" class="form-label">Car Image 1</label>
+                <input type="file" class="form-control" id="image1" name="image1">
+              </div>
+              <div class="col-md-4">
+                <label for="image2" class="form-label">Car Image 2</label>
+                <input type="file" class="form-control" id="image2" name="image2">
+              </div>
+              <div class="col-md-4">
+                <label for="image3" class="form-label">Car Image 3</label>
+                <input type="file" class="form-control" id="image3" name="image3">
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="carname" class="form-label">Car Name</label>
+                <input type="text" class="form-control" id="carname" name="carname">
+              </div>
+              <div class="col-md-6">
+                <label for="modelyear" class="form-label">Model Year</label>
+                <input type="number" class="form-control" id="modelyear" name="modelyear">
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="cartype" class="form-label">Car Type</label>
+                <select class="form-select" id="cartype" name="cartype">
+                  <option value="Sedan">Sedan</option>
+                  <option value="SUV">SUV</option>
+                  <option value="Hatchback">Hatchback</option>
+                  <option value="MPV">MPV</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="geartype" class="form-label">Gear Type</label>
+                <select class="form-select" id="geartype" name="geartype">
+                  <option value="Automatic">Automatic</option>
+                  <option value="Manual">Manual</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="fueltype" class="form-label">Fuel Type</label>
+                <select class="form-select" id="fueltype" name="fueltype">
+                  <option value="Diesel">Diesel</option>
+                  <option value="Petrol">Petrol</option>
+                  <option value="Hybrid">Hybrid</option>
+                  <option value="Electric (EV)">Electric (EV)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="seating" class="form-label">Seating Capacity</label>
+                <select class="form-select" id="seating" name="seating">
+                  <option value="5">5 Seater</option>
+                  <option value="7 & 8">7 Seater</option>
+                </select>
+              </div>
+              <div class="col-md-6 d-flex align-items-center mt-4">
+                <input class="form-check-input me-2" type="checkbox" id="fastag" name="fastag">
+                <label class="form-check-label" for="fastag">FASTag Available</label>
+              </div>
+            </div>
+
+            <!-- Features Section
+            <div class="mb-3">
+              <label class="form-label fw-bold">Features</label>
+              <div class="row">
+                
+                <div class="col-md-4">
+                  <div class="form-check"><input class="form-check-input" type="checkbox" name="features" value="Airbags (Dual, 6 airbags)"> Airbags (Dual, 6 airbags)</div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox" name="features" value="ABS with EBD"> ABS with EBD</div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox" name="features" value="ESP (Electronic Stability Program)"> ESP (Electronic Stability Program)</div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox" name="features" value="Rear Parking Sensors / Camera"> Rear Parking Sensors / Camera</div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox" name="features" value="360-Degree Camera"> 360-Degree Camera</div>
+                </div>
+                <div class="col-md-4">
+                  
+                  <div class="form-check"><input class="form-check-input" type="checkbox" name="features" value="ADAS (Advanced Driver Assistance Systems)"> ADAS (Advanced Driver Assistance Systems)</div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox" name="features" value="Touchscreen Infotainment System"> Touchscreen Infotainment System</div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox" name="features" value="Android Auto / Apple CarPlay"> Android Auto / Apple CarPlay</div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox" name="features" value="Bluetooth Connectivity"> Bluetooth Connectivity</div>
+                  
+                </div>
+                <div class="col-md-4">
+                  <div class="form-check"><input class="form-check-input" type="checkbox" name="features" value="JBL / Bose Audio System"> JBL / Bose Audio System</div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox" name="features" value="Cruise Control"> Cruise Control</div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox" name="features" value="Panoramic Sunroof"> Panoramic Sunroof</div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox" name="features" value="Keyless Entry (Smart Key)"> Keyless Entry (Smart Key)</div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox" name="features" value="Drive Modes (Eco, City, Sport)"> Drive Modes (Eco, City, Sport)</div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox" name="features" value="Electronic Parking Brake (EPB)"> Electronic Parking Brake (EPB)</div>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="price" class="form-label">Price per Hour (₹)</label>
+                <input type="number" class="form-control" id="price" name="price">
+              </div>
+              <div class="col-md-6">
+                <label for="deposit" class="form-label">Security Deposit (₹)</label>
+                <input type="number" class="form-control" id="deposit" name="deposit">
+              </div>
+            </div>
+
+            <!-- <div class="row mb-3">
+  <div class="col-md-6">
+    <label for="availability" class="form-label">Availability</label>
+    <select class="form-select" id="availability" name="availability">
+      <option value="Available">Available</option>
+      <option value="Not Available">Not Available</option>
+    </select>
+  </div>
+</div> -->
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-success">Save Car</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Car List -->
+  <h4 class="mb-3 fw-bold">Car List</h4>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped align-middle text-center">
+      <thead class="table-dark">
+        <tr>
+          <th>Images</th>
+          <th>Car Name</th>
+          <th>Model Year</th>
+          <th>Type</th>
+          <th>Gear</th>
+          <th>Fuel</th>
+          <th>Seating</th>
+          <th>FASTag</th>
+          <!-- <th>Features</th> -->
+          <th>Price (₹/hr)</th>
+          <th>Deposit (₹)</th>
+          <!-- <th>Availability</th> -->
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for car in cars %}
+        <tr>
+          <td>
+            {% if car.image1 %}
+              <img src="{{ car.image1.url }}" alt="Car Image 1" width="60"><br>
+            {% else %}
+              No Image
+              
+            {% endif %}
+          </td>
+          <td>{{ car.carname }}</td>
+          <td>{{ car.modelyear }}</td>
+          <td>{{ car.cartype }}</td>
+          <td>{{ car.geartype }}</td>
+          <td>{{ car.fueltype }}</td>
+          <td>{{ car.seating }}</td>
+          <td>{{ car.fastag|yesno:"Yes,No" }}</td>
+          <td>₹{{ car.price }}</td>
+          <td>₹{{ car.deposit }}</td>
+          <!-- <td>{{ car.availability }}</td> -->
+          <td>
+            <div class="d-flex justify-content-center gap-2">
+              <a href="{% url 'update' car.id %}"><button class="btn btn-warning btn-sm">
+                <i class="fas fa-edit"></i> Update
+              </button>
+              </a>
+              <a href="{% url 'delete' car.id %}"><button class="btn btn-danger btn-sm">
+                <i class="fas fa-trash-alt"></i> Delete
+              </button>
+              </a>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+{% endblock %}

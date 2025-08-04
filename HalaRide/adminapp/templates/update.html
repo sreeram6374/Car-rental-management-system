@@ -1,0 +1,124 @@
+{% extends 'adminlogin.html' %}
+
+{% block body %}
+<div class="px-5" style="margin-top: 100px">
+
+  
+        <form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <div class="modal-body" style="max-height: 100%; overflow-y: auto; overflow-x: hidden;">
+<div class="row mb-3">
+  <div class="col-md-4">
+    <label for="image1" class="form-label">Car Image 1</label><br>
+    {% if car.image1 %}
+      <img src="{{ car.image1.url }}" width="100" alt="Image 1" class="mb-2 rounded-3">
+    {% endif %}
+    <input type="file" class="form-control" id="image1" name="image1">
+  </div>
+
+  <div class="col-md-4">
+    <label for="image2" class="form-label">Car Image 2</label><br>
+    {% if car.image2 %}
+      <img src="{{ car.image2.url }}" width="100" alt="Image 2" class="mb-2 rounded-3">
+    {% endif %}
+    <input type="file" class="form-control" id="image2" name="image2">
+  </div>
+
+  <div class="col-md-4">
+    <label for="image3" class="form-label">Car Image 3</label><br>
+    {% if car.image3 %}
+      <img src="{{ car.image3.url }}" width="100" alt="Image 3" class="mb-2 rounded-3">
+    {% endif %}
+    <input type="file" class="form-control" id="image3" name="image3">
+  </div>
+</div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="carname" class="form-label">Car Name</label>
+        <input type="text" class="form-control" id="carname" name="carname" value="{{ car.carname }}">
+      </div>
+      <div class="col-md-6">
+        <label for="modelyear" class="form-label">Model Year</label>
+        <input type="number" class="form-control" id="modelyear" name="modelyear" value="{{ car.modelyear }}">
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label for="cartype" class="form-label">Car Type</label>
+        <select class="form-select" id="cartype" name="cartype">
+          <option value="Sedan" {% if car.cartype == "Sedan" %}selected{% endif %}>Sedan</option>
+          <option value="SUV" {% if car.cartype == "SUV" %}selected{% endif %}>SUV</option>
+          <option value="Hatchback" {% if car.cartype == "Hatchback" %}selected{% endif %}>Hatchback</option>
+          <option value="MPV" {% if car.cartype == "MPV" %}selected{% endif %}>MPV</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="geartype" class="form-label">Gear Type</label>
+        <select class="form-select" id="geartype" name="geartype">
+          <option value="Automatic" {% if car.geartype == "Automatic" %}selected{% endif %}>Automatic</option>
+          <option value="Manual" {% if car.geartype == "Manual" %}selected{% endif %}>Manual</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="fueltype" class="form-label">Fuel Type</label>
+        <select class="form-select" id="fueltype" name="fueltype">
+          <option value="Diesel" {% if car.fueltype == "diesel" %}selected{% endif %}>Diesel</option>
+          <option value="Petrol" {% if car.fueltype == "petrol" %}selected{% endif %}>Petrol</option>
+          <option value="Hybrid" {% if car.fueltype == "hybrid" %}selected{% endif %}>Hybrid</option>
+          <option value="Electric (EV)" {% if car.fueltype == "Electric (EV)" %}selected{% endif %}>Electric (EV)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="seating" class="form-label">Seating Capacity</label>
+        <select class="form-select" id="seating" name="seating">
+          <option value="5" {% if car.seating == "5" %}selected{% endif %}>5 Seater</option>
+          <option value="7" {% if car.seating == "7" %}selected{% endif %}>7 Seater</option>
+        </select>
+      </div>
+      <div class="col-md-6 d-flex align-items-center mt-4">
+        <input class="form-check-input me-2" type="checkbox" id="fastag" name="fastag" {% if car.fastag %}checked{% endif %}>
+        <label class="form-check-label" for="fastag">FASTag Available</label>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="price" class="form-label">Price per Hour (₹)</label>
+        <input type="number" class="form-control" id="price" name="price" value="{{ car.price }}">
+      </div>
+      <div class="col-md-6">
+        <label for="deposit" class="form-label">Security Deposit (₹)</label>
+        <input type="number" class="form-control" id="deposit" name="deposit" value="{{ car.deposit }}">
+      </div>
+    </div>
+
+    <!-- <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="availability" class="form-label">Availability</label>
+        <select class="form-select" id="availability" name="availability">
+          <option value="Available" {% if car.availability == "Available" %}selected{% endif %}>Available</option>
+          <option value="Not Available" {% if car.availability == "Not Available" %}selected{% endif %}>Not Available</option>
+        </select>
+      </div>
+    </div> -->
+  </div>
+
+  <div class="modal-footer d-flex gap-3">
+   
+    <button type="submit" class="btn btn-success">Update</button>
+  </div>
+</form>
+
+
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

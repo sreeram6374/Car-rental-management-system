@@ -1,0 +1,21 @@
+{% extends 'signup.html' %}
+
+{% block login_heading %}
+<h3 class="text-center mb-3 fw-bold">Login</h3>
+{% endblock %}
+
+{% block form_fields %}
+  {{ login_form.as_p }}
+{% endblock %}
+
+{% block confirm_password %}
+{# Skip confirm password for login #}
+{% endblock %}
+
+{% block login-btn %}
+Login
+{% endblock %}
+
+{% block signup-btn %}
+<p class="text-center mt-3">Don't have an account? <a href="{% url 'signup' %}">Signup</a></p>
+{% endblock %}

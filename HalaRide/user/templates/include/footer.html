@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HalaRide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'CSS/footer.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- Bootstrap 5 CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Footer -->
+<footer class="bg-dark text-white pt-5 pb-3 mt-auto">
+  <div class="container">
+    <div class="row">
+
+      <!-- About -->
+      <div class="col-md-4 mb-3">
+        <h1 class="logo text-white">HalaRide</h1>
+        <p class="mt-3">
+          HalaRide is your go-to solution for easy, affordable, and reliable car rentals across India. Whether you're planning a vacation or a business trip, ride with confidence.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-2 mb-3">
+        <h5 class="text-uppercase">Quick Links</h5>
+        <ul class="list-unstyled pt-2">
+          <li><a href="{% url 'index' %}" class="text-white text-decoration-none">Home</a></li>
+          <li><a href="{% url 'carlist' %}" class="text-white text-decoration-none">Cars</a></li>
+          <li><a href="{% url 'login' %}" class="text-white text-decoration-none">Login</a></li>
+          <li><a href="{% url 'signup' %}" class="text-white text-decoration-none">Signup</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-md-3 mb-3">
+        <h5 class="text-uppercase">Contact Info</h5>
+        <p class="mt-3 mb-1">123, HalaRide Street,<br>Kanyakumari, Tamil Nadu, India</p>
+        <p class="mb-1">Phone: +91 98765 43210</p>
+        <p>Email: support@halaride.com</p>
+      </div>
+
+      <!-- Follow Us -->
+      <div class="col-md-3 mb-3">
+        <h5 class="text-uppercase">Follow Us</h5>
+        <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-white"><i class="fab fa-linkedin"></i></a>
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center mt-4 border-top pt-3">
+      <small>&copy; 2025 HalaRide. All Rights Reserved.</small>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

@@ -1,0 +1,12 @@
+*{border: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+:root {
+  --primary: #0011ff;
+}
+
+.brand-logo a{font-family: Forte;
+    color: var(--primary);
+}

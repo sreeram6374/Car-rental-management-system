@@ -1,0 +1,25 @@
+*{border: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+:root {
+  --primary: #0011ff;
+}
+
+.custom-margin-top {
+  margin-top: 200px;
+}
+
+.price-cal {
+  top: 237px;
+}
+
+.price-cal-sticky {
+  position: sticky;
+}
+
+.cardelivery-info {
+  padding-top: 12px;
+}
+
